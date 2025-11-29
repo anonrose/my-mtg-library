@@ -12,6 +12,8 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { api } from "~/trpc/react";
+import { Navbar } from "../_components/marketing/navbar";
+import { Footer } from "../_components/marketing/footer";
 
 const tiers = [
   {
@@ -76,16 +78,22 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 py-12 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">
-            Choose Your Plan
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Start free, upgrade when you need more power
-          </p>
-        </div>
+    <div className="min-h-screen bg-white dark:bg-slate-950">
+      <Navbar />
+      
+      <div className="pt-32 pb-20 bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+              Choose Your
+              <span className="block bg-gradient-to-r from-purple-600 via-violet-600 to-blue-600 bg-clip-text text-transparent">
+                Perfect Plan
+              </span>
+            </h1>
+            <p className="text-xl text-slate-600 dark:text-slate-400">
+              Start free, upgrade when you need more power
+            </p>
+          </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {tiers.map((tier) => (
@@ -149,11 +157,14 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>All plans include secure payment processing via Stripe.</p>
-          <p className="mt-2">Cancel anytime. No hidden fees.</p>
+          <div className="mt-12 text-center text-sm text-slate-600 dark:text-slate-400">
+            <p>All plans include secure payment processing via Stripe.</p>
+            <p className="mt-2">Cancel anytime. No hidden fees.</p>
+          </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
