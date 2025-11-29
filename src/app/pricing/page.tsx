@@ -80,7 +80,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
       <Navbar />
-      
+
       <div className="pt-32 pb-20 bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
@@ -95,67 +95,67 @@ export default function PricingPage() {
             </p>
           </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {tiers.map((tier) => (
-            <Card
-              key={tier.id}
-              className={
-                tier.highlighted
-                  ? "border-primary shadow-lg relative"
-                  : "border-border"
-              }
-            >
-              {tier.highlighted && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
-                    MOST POPULAR
-                  </span>
-                </div>
-              )}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {tiers.map((tier) => (
+              <Card
+                key={tier.id}
+                className={
+                  tier.highlighted
+                    ? "border-primary shadow-lg relative"
+                    : "border-border"
+                }
+              >
+                {tier.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
+                      MOST POPULAR
+                    </span>
+                  </div>
+                )}
 
-              <CardHeader>
-                <CardTitle className="text-2xl">{tier.name}</CardTitle>
-                <CardDescription>{tier.description}</CardDescription>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">{tier.price}</span>
-                  {tier.priceId && (
-                    <span className="text-muted-foreground">/month</span>
-                  )}
-                </div>
-              </CardHeader>
+                <CardHeader>
+                  <CardTitle className="text-2xl">{tier.name}</CardTitle>
+                  <CardDescription>{tier.description}</CardDescription>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold">{tier.price}</span>
+                    {tier.priceId && (
+                      <span className="text-muted-foreground">/month</span>
+                    )}
+                  </div>
+                </CardHeader>
 
-              <CardContent>
-                <ul className="space-y-3">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start">
-                      <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {tier.features.map((feature) => (
+                      <li key={feature} className="flex items-start">
+                        <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
 
-              <CardFooter>
-                <Button
-                  className="w-full"
-                  variant={tier.highlighted ? "default" : "outline"}
-                  disabled={
-                    loading === tier.priceId ||
-                    (!tier.priceId && true) ||
-                    (status?.isPremium && tier.highlighted)
-                  }
-                  onClick={() => handleSubscribe(tier.priceId)}
-                >
-                  {loading === tier.priceId
-                    ? "Loading..."
-                    : status?.isPremium && tier.highlighted
-                    ? "Current Plan"
-                    : tier.cta}
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+                <CardFooter>
+                  <Button
+                    className="w-full"
+                    variant={tier.highlighted ? "default" : "outline"}
+                    disabled={
+                      loading === tier.priceId ||
+                      (!tier.priceId && true) ||
+                      (status?.isPremium && tier.highlighted)
+                    }
+                    onClick={() => handleSubscribe(tier.priceId)}
+                  >
+                    {loading === tier.priceId
+                      ? "Loading..."
+                      : status?.isPremium && tier.highlighted
+                      ? "Current Plan"
+                      : tier.cta}
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
 
           <div className="mt-12 text-center text-sm text-slate-600 dark:text-slate-400">
             <p>All plans include secure payment processing via Stripe.</p>
@@ -168,4 +168,3 @@ export default function PricingPage() {
     </div>
   );
 }
-

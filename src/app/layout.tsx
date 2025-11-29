@@ -1,16 +1,16 @@
 import "~/styles/globals.css";
 
-import { type Metadata, type Viewport } from "next";
+import { type Viewport } from "next";
 import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { createMetadata } from "~/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "MTG Scanner",
-  description: "Scan and track your Magic: The Gathering cards",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-  manifest: "/manifest.json",
-};
+export const metadata = createMetadata({
+  title: "MTG Library",
+  description:
+    "Manage your Magic: The Gathering collection with AI-powered card recognition. Track prices, build decks, and organize your cards effortlessly.",
+});
 
 export const viewport: Viewport = {
   width: "device-width",

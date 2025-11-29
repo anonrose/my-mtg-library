@@ -1,11 +1,11 @@
 {
-  "name": "MTG Scanner",
-  "short_name": "MTG Scanner",
-  "description": "Scan and track your Magic: The Gathering card collection",
+  "name": "MTG Library - Collection Manager",
+  "short_name": "MTG Library",
+  "description": "Manage your Magic: The Gathering collection with AI-powered card recognition",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed",
   "orientation": "portrait",
   "icons": [
     {
@@ -15,4 +15,5 @@
     }
   ]
 }
+
 

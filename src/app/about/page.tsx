@@ -131,7 +131,7 @@ export default function AboutPage() {
             Our Values
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {values.map((value, index) => (
+            {values.map((value) => (
               <div key={value.title} className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
                   <value.icon className="w-8 h-8 text-white" />
@@ -227,4 +227,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
