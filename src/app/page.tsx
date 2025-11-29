@@ -92,7 +92,7 @@ export default function HomePage() {
               Everything You Need to Manage Your Collection
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              From scanning to trading, we've built the ultimate toolkit for MTG
+              From scanning to trading, we&apos;ve built the ultimate toolkit for MTG
               collectors
             </p>
           </div>

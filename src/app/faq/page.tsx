@@ -171,7 +171,7 @@ export default function FAQPage() {
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Still have questions?</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              Can't find the answer you're looking for? Our support team is here
+              Can&apos;t find the answer you&apos;re looking for? Our support team is here
               to help.
             </p>
             <a

@@ -15,7 +15,6 @@ import {
 export function TradeBinder() {
   const utils = api.useUtils();
   const [cards] = api.card.getAll.useSuspenseQuery();
-  const session = api.useUtils().client.auth; // Just getting session context if needed
   // For now, assuming user is logged in
 
   // Filter for tradable cards

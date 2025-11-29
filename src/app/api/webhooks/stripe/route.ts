@@ -5,12 +5,13 @@ import { env } from "~/env";
 import { db } from "~/server/db";
 
 const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-  apiVersion: "2024-11-20.acacia",
+  apiVersion: "2025-11-17.clover",
 });
 
 export async function POST(req: Request) {
   const body = await req.text();
-  const signature = headers().get("Stripe-Signature") as string;
+  const headersList = await headers();
+  const signature = headersList.get("Stripe-Signature") as string;
 
   let event: Stripe.Event;
 
@@ -20,9 +21,10 @@ export async function POST(req: Request) {
       signature,
       env.STRIPE_WEBHOOK_SECRET ?? ""
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
-      { error: `Webhook Error: ${err.message}` },
+      { error: `Webhook Error: ${errorMessage}` },
       { status: 400 }
     );
   }
@@ -40,7 +42,7 @@ export async function POST(req: Request) {
         stripeSubscriptionId: subscription.id,
         stripeCustomerId: subscription.customer as string,
         stripePriceId: subscription.items.data[0]?.price.id,
-        stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
+        stripeCurrentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
         status: subscription.status,
       },
     });
@@ -57,7 +59,7 @@ export async function POST(req: Request) {
       },
       data: {
         stripePriceId: subscription.items.data[0]?.price.id,
-        stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
+        stripeCurrentPeriodEnd: new Date((subscription as any).current_period_end * 1000),
         status: subscription.status,
       },
     });
@@ -78,4 +80,3 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ received: true });
 }
-
